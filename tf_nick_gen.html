@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            TotalFreedom Discord Colored Nick Generator
+        </title>
+        <style>
+            @import url("./fonts/OpenSans.ttf");
+            body {
+                text-align: center;
+                font-family: 'Open Sans', sans-serif;
+            }
+
+            input {
+                width: 50vh;
+                height: 3vh;
+                font-size: medium;
+            }
+
+            button {
+                width: 20vh;
+                height: 5vh;
+                font-size: medium;
+            }
+
+            #output {
+                background-color: beige;
+                user-select: none;
+            }
+        </style>
+        <script>
+            function copy() {
+                var output = document.getElementById("output")
+                output.select()
+                document.execCommand("copy")
+            }
+
+            setInterval(() => {
+                var nickname = document.getElementById("nick")
+                var output = document.getElementById("output")
+                output.value = nickname.value.replaceAll("&", "§").replaceAll("§", "§§x")
+            }, 100)
+        </script>
+    </head>
+
+    <body>
+        <p>
+            Enter the nickname you want. You can either use section signs or ampersands.
+        </p>
+        <input placeholder="Nickname" id="nick">
+        <br>
+        <p>The valid nickname will be below:</p>
+        <input placeholder="Output" id="output" readonly="true" id="output">
+        <br>
+        <br>
+        <button id="copy" onclick="copy()">Copy to clipboard</button>
+    </body>
+</html>
